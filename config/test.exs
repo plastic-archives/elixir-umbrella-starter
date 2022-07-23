@@ -2,6 +2,13 @@ import Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
+config :dashboard, Dashboard.Endpoint,
+  http: [ip: {127, 0, 0, 1}, port: 4002],
+  secret_key_base: "u1KalZyaeuQ7tWvHyI9EX8RU0QuCKgN3Vi1k4EgdNtX/bhKAJFukzAs6uumunK68",
+  server: false
+
+# We don't run a server during test. If one is required,
+# you can enable the server option below.
 config :web_api, WebApi.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "xp54gF1WxPx9Dy//V2NG6+2wCtvf9AJrEsc6daTr6LgyBb0NpEjucrEQgV3MUws0",

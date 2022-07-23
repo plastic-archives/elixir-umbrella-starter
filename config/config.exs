@@ -9,6 +9,27 @@
 # move said applications out of the umbrella.
 import Config
 
+config :dashboard,
+  ecto_repos: [Dashboard.Repo],
+  generators: [context_app: false, binary_id: true]
+
+# Configures the endpoint
+config :dashboard, Dashboard.Endpoint,
+  url: [host: "localhost"],
+  render_errors: [view: Dashboard.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Dashboard.PubSub,
+  live_view: [signing_salt: "enH9JqdY"]
+
+# Configure esbuild (the version is required)
+config :esbuild,
+  version: "0.14.29",
+  default: [
+    args:
+      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../apps/dashboard/assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
 config :web_api,
   ecto_repos: [Core.Repo],
   generators: [context_app: false, binary_id: true]
