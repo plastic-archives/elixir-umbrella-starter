@@ -10,7 +10,7 @@
 import Config
 
 config :web_api,
-  ecto_repos: [WebApi.Repo],
+  ecto_repos: [Core.Repo],
   generators: [context_app: false, binary_id: true]
 
 # Configures the endpoint
