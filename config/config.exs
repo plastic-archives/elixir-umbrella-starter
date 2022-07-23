@@ -10,7 +10,7 @@
 import Config
 
 config :dashboard,
-  ecto_repos: [Dashboard.Repo],
+  ecto_repos: [Core.Repo],
   generators: [context_app: false, binary_id: true]
 
 # Configures the endpoint
