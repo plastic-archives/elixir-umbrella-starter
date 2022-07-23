@@ -9,6 +9,17 @@
 # move said applications out of the umbrella.
 import Config
 
+config :web_api,
+  ecto_repos: [WebApi.Repo],
+  generators: [context_app: false, binary_id: true]
+
+# Configures the endpoint
+config :web_api, WebApi.Endpoint,
+  url: [host: "localhost"],
+  render_errors: [view: WebApi.ErrorView, accepts: ~w(json), layout: false],
+  pubsub_server: WebApi.PubSub,
+  live_view: [signing_salt: "sjWuzTlr"]
+
 # Configure Mix tasks and generators
 config :core,
   ecto_repos: [Core.Repo]
